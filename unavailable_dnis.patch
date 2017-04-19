@@ -1,0 +1,40 @@
+diff -Naur openr2-1.3.3/src/r2context.c openr2-1.3.4/src/r2context.c
+--- openr2-1.3.3.ori/src/r2context.c	2013-01-01 06:00:00.000000000 +0100
++++ openr2-1.3.3/src/r2context.c	2015-03-21 07:23:52.000000000 +0100
+@@ -834,11 +834,13 @@
+ 
+ 		/* misc settings */
+ 		LOADSETTING(mf_threshold)
++
++		/* CAS R2 bits */
++		LOADSETTING(cas_r2_bits)
++		LOADSETTING(cas_nonr2_bits)
+ 	}
+ 	r2context->configured_from_file = 1;
+ 	fclose(variant_file);
+ 	return 0;
+ }
+-#undef LOADTONE
+-#undef LOADTIMER
+ 
+diff -Naur openr2-1.3.3/src/r2proto.c openr2-1.3.4/src/r2proto.c
+--- openr2-1.3.3.ori/src/r2proto.c	2013-01-01 06:00:00.000000000 +0100
++++ openr2-1.3.3/src/r2proto.c	2015-03-21 07:23:52.000000000 +0100
+@@ -23,6 +23,7 @@
+  * Cleiber Marques da Silva <cleibermarques@hotmail.com>
+  * Humberto Figuera <hfiguera@gmail.com>
+  * Afonso Zimmermann <afonso.zimmermann@gmail.com>
++ * Gustavo Cremella <gcremella@gmail.com>
+  *
+  */
+ 
+@@ -1026,7 +1027,8 @@
+ 		r2chan->mf_state = OR2_MF_DNIS_TXD;
+ 		prepare_mf_tone(r2chan, r2chan->dnis[r2chan->dnis_index]);
+ 	/* if no more DNIS, and there is a signal for it, use it */
+-	} else if (GI_TONE(r2chan).no_more_dnis_available) {
++	} else if (GI_TONE(r2chan).no_more_dnis_available &&
++	            (r2chan->mf_state != OR2_MF_DNIS_END_TXD && r2chan->mf_state != OR2_MF_WAITING_TIMEOUT)) {
+ 		openr2_log(r2chan, OR2_LOG_DEBUG, "Sending unavailable DNIS signal\n");
+ 		r2chan->mf_state = OR2_MF_DNIS_END_TXD;
+ 		prepare_mf_tone(r2chan, GI_TONE(r2chan).no_more_dnis_available);
