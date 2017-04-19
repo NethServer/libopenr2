@@ -1,6 +1,6 @@
 diff -Naur openr2-1.3.3/src/r2context.c openr2-1.3.4/src/r2context.c
---- openr2-1.3.3.ori/src/r2context.c	2013-01-01 06:00:00.000000000 +0100
-+++ openr2-1.3.3/src/r2context.c	2015-03-21 07:23:52.000000000 +0100
+--- openr2-1.3.3/src/r2context.c	2013-01-01 06:00:00.000000000 +0100
++++ openr2-1.3.4/src/r2context.c	2015-03-21 07:23:52.000000000 +0100
 @@ -834,11 +834,13 @@
  
  		/* misc settings */
@@ -18,8 +18,8 @@ diff -Naur openr2-1.3.3/src/r2context.c openr2-1.3.4/src/r2context.c
 -#undef LOADTIMER
  
 diff -Naur openr2-1.3.3/src/r2proto.c openr2-1.3.4/src/r2proto.c
---- openr2-1.3.3.ori/src/r2proto.c	2013-01-01 06:00:00.000000000 +0100
-+++ openr2-1.3.3/src/r2proto.c	2015-03-21 07:23:52.000000000 +0100
+--- openr2-1.3.3/src/r2proto.c	2013-01-01 06:00:00.000000000 +0100
++++ openr2-1.3.4/src/r2proto.c	2015-03-21 07:23:52.000000000 +0100
 @@ -23,6 +23,7 @@
   * Cleiber Marques da Silva <cleibermarques@hotmail.com>
   * Humberto Figuera <hfiguera@gmail.com>
