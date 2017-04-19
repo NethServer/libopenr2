@@ -1,4 +1,4 @@
-%define aversion 1.3.4
+%define aversion 1.3.3
 %define arelease X-BUILD-NUMBER_centos6
 %define actversion %(echo %{aversion}|sed -e "s/-.*$//g")
 %define subvers %(echo %{aversion}|awk "/-/"|sed -e "s/^.*-//"|awk '{print "0." $1 "."}')
@@ -67,7 +67,7 @@ The Documentation files for OpenR2
 ###################################################################
 %prep
 %setup -n openr2-%{version}
-%patch0 -p0
+%patch0 -p1
 
 ###################################################################
 #
